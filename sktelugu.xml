@@ -303,7 +303,7 @@
 			<entry>
 				<title>ఆదర్శ  పురుషుడు</title>
 				<feature></feature>
-				<page>00008-0009</page>
+				<page>0008-0009</page>
 				<allauthors>
 					<author type="" title="">జగద్గురు శ్రీ అభినవ విద్యాతీర్థ    మహాస్వామివారు</author>
 				</allauthors>
@@ -714,7 +714,7 @@
 			<entry>
 				<title>శివరాత్రి ఉత్సవాలకు శ్రీ జగద్గురువుల సందేశము</title>
 				<feature></feature>
-				<page>00023</page>
+				<page>0023-0023</page>
 				<allauthors />
 			</entry>
 			<entry>
@@ -1354,7 +1354,7 @@
 			<entry>
 				<title>శ్రీ శారదా సువాసినీమండలి</title>
 				<feature></feature>
-				<page>0046, 0055, 0059, 0065</page>
+				<page>0046-0046; 0055-0055; 0059-0059; 0065-0065</page>
 				<allauthors />
 			</entry>
 			<entry>
@@ -4026,13 +4026,13 @@
 				<allauthors />
 			</entry>
 			<entry>
-				<title>శ్రీ జగద్గురు అభినవ విద్యాతీర్థ మహాస్వామి చరణులఉపదేశములు</title>
+				<title>శ్రీ జగద్గురు అభినవ విద్యాతీర్థ మహాస్వామివారి ఉపదేశములు</title>
 				<feature></feature>
 				<page>0005-0006</page>
 				<allauthors />
 			</entry>
 			<entry>
-				<title>శ్రీ జగద్గురు భారతీతీర్థ స్వామి చరణులఉపదేశములు</title>
+				<title>శ్రీ జగద్గురు భారతీతీర్థ స్వామివారి ఉపదేశములు</title>
 				<feature></feature>
 				<page>0007-0008</page>
 				<allauthors />
@@ -4569,7 +4569,7 @@
 				<allauthors />
 			</entry>
 			<entry>
-				<title>శ్రీ జగద్గురు భారతీతీర్థ స్వామి చరణులఉపదేశములు</title>
+				<title>శ్రీ జగద్గురు భారతీతీర్థ స్వామివారి ఉపదేశములు</title>
 				<feature></feature>
 				<page>0005-0005</page>
 				<allauthors />
@@ -4664,7 +4664,7 @@
 				<allauthors />
 			</entry>
 			<entry>
-				<title>శ్రీ జగద్గురు భారతీతీర్థ స్వామి చరణులఉపదేశములు</title>
+				<title>శ్రీ జగద్గురు భారతీతీర్థ స్వామివారి ఉపదేశములు</title>
 				<feature></feature>
 				<page>0005-0006</page>
 				<allauthors />
@@ -5659,7 +5659,7 @@
 			<entry>
 				<title>సంస్కృతభాషను మనమేల ఆదరించి  నెర్చుకొనవలెను? (14)</title>
 				<feature></feature>
-				<page>00143</page>
+				<page>0014-0014</page>
 				<allauthors />
 			</entry>
 			<entry>
@@ -5863,7 +5863,7 @@
 			<entry>
 				<title>గ్రంథావలోకనము</title>
 				<feature></feature>
-				<page>0028-0028</page>
+				<page>0029-0029</page>
 				<allauthors />
 			</entry>
 			<entry>
@@ -7739,7 +7739,7 @@
 			<entry>
 				<title>శ్రీ జగద్గురు భారతీతీర్థస్వామివారి వార్షిక వర్ధంతి</title>
 				<feature></feature>
-				<page>0029-0032</page>
+				<page>0034-0034</page>
 				<allauthors>
 					<author type="" title="">ఆకెళ్ళ సత్యనారాయణమూర్తి</author>
 				</allauthors>
@@ -8189,7 +8189,7 @@
 				<allauthors />
 			</entry>
 			<entry>
-				<title>శ్రీ శంకర భగవత్పాదాచార్య విరచిత అపరోక్షానుభూతి</title>
+				<title>శ్రీ మచ్ఛంకర భగవత్పాదాచార్య విరచిత అపరోక్షానుభూతి</title>
 				<feature></feature>
 				<page>0011-0012</page>
 				<allauthors>
@@ -9056,13 +9056,13 @@
 			<entry>
 				<title>శృంగేరి శ్రీ శంకర జయంతి ఉత్సవ విశేషములు</title>
 				<feature></feature>
-				<page>0032-0032</page>
+				<page>0031-0031</page>
 				<allauthors />
 			</entry>
 			<entry>
 				<title>శ్రీ జగద్గురు చరణుల  చాతుర్మాస్య వ్రతము</title>
 				<feature></feature>
-				<page>0034-0035</page>
+				<page>0033-0033</page>
 				<allauthors>
 					<author type="" title="">ఆకెళ్ల సత్యనారాయణమూర్తి</author>
 				</allauthors>
@@ -11954,183 +11954,287 @@
 		</part>
 		<part pnum="03" month="11" year="1986" maasa="కార్తీకము-మార్గశిరము" samvatsara="అక్షయ్">
 			<entry>
-				<title>శ్రీ శంకర భగవత్పాదాచార్య విరచిత లలితా పంచరత్న స్తోత్రము</title>
+				<title> శ్రీ శంకర భగవత్పాదాచార్య విరచిత లలితా పంచరత్న స్తోత్రము</title>
 				<feature></feature>
-				<page>0001-0001</page>
-				<allauthors />
-			</entry>
-			<entry>
-				<title>శ్రీ జగద్గురు సచ్చిదానంద శివాభినవ నృసింహభారతీ మహాస్వామి చరణుల ఉపదేశము</title>
-				<feature></feature>
-				<page>0002-0003</page>
-				<allauthors />
+				<page>0001</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
 			</entry>
 			<entry>
 				<title>శ్రీ జగద్గురు చంద్రశేఖరభారతీ మహాస్వామి చరణ స్మరణమ్</title>
 				<feature></feature>
-				<page>0003-0004</page>
-				<allauthors />
+				<page>0002</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
 			</entry>
 			<entry>
 				<title>శ్రీ జగద్గురు  శ్రీ అభినవ విద్యాతీర్థ మహాస్వామి చరుణల ఉపదేశము</title>
 				<feature></feature>
-				<page>0004-0006</page>
-				<allauthors />
+				<page>0002-0006</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
 			</entry>
 			<entry>
 				<title>శ్రీ జగద్గురు భారతీతీర్థ స్వామి చరణుల ఉపదేశము</title>
 				<feature></feature>
-				<page>0006-0011</page>
-				<allauthors />
+				<page>0007-0012</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
 			</entry>
 			<entry>
-				<title>శంకర విజయధ్వజము</title>
+				<title>భక్త్యంజలి</title>
 				<feature></feature>
-				<page>0012-0015</page>
+				<page>0012-0013</page>
 				<allauthors>
-					<author type="" title="">బ్రహ్మశ్రీ కొక్కొండ వేంకటరత్న శర్మగారు</author>
+					<author type="" sal="">సంపాదకుడు</author>
+				</allauthors>
+			</entry>
+			<entry>
+				<title>శ్రీ మహాసన్నిధానమువారు</title>
+				<feature></feature>
+				<page>0013-0015</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+				<entry>
+				<title>గురు కృపా విలాసము</title>
+				<feature></feature>
+				<page>0016</page>
+				<allauthors>
+					<author type="" sal="ళ్రీ"> వి. పి. యన్. నాడార్</author>
+				</allauthors>
+			</entry>
+				<entry>
+				<title>శిష్య వాత్సల్యమూర్తులు</title>
+				<feature></feature>
+				<page>0016-0018</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+			<entry>
+				<title>అనుగ్రహ ప్రసాదము</title>
+				<feature></feature>
+				<page>0018-0019</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+			<entry>
+				<title>పంచాంగ విశేషములు</title>
+				<feature></feature>
+				<page>0020</page>
+				<allauthors>
+					<author type="" sal=""></author>
 				</allauthors>
 			</entry>
 			<entry>
 				<title>శ్రీ మహాసన్నిధానమువారి దృష్టాంత నీతి కథలు</title>
 				<feature></feature>
-				<page>0015-0016</page>
-				<allauthors />
-			</entry>
-			<entry>
-				<title>‌శ్రీ శంకర భగవత్పాద విరచిత శ్రీ వివేక చూడామణి</title>
-				<feature></feature>
-				<page>0016-0020</page>
+				<page>0021-0022</page>
 				<allauthors>
-					<author type="1" title="">శ్రీ జగద్గురు చంద్రశేఖర భారతీస్వామిభి‌ః</author>
-					<author type="2" title="డా ||">పుల్లెల శ్రీ రామచంద్రుడు</author>
+					<author type="" sal=""></author>
 				</allauthors>
 			</entry>
 			<entry>
-				<title>దీపారాధన</title>
+				<title>శంకర విజయధ్వజము</title>
 				<feature></feature>
-				<page>0021-0024</page>
-				<allauthors />
+				<page>0022-0025</page>
+				<allauthors>
+					<author type="" sal="బ్రహ్మశ్రీ">కొక్కొండ వేంకటరత్న శర్మగారు</author>
+				</allauthors>
 			</entry>
 			<entry>
-				<title>కమ్యూనిజము-శ్రీ శంకర సిద్ధాంతము</title>
+				<title>గ్రంథావలోకనము</title>
 				<feature></feature>
-				<page>0024-0026</page>
+				<page>0025-0026</page>
 				<allauthors>
-					<author type="" title="">శ్రీ తుమ్మలపల్లి రామలింగేశ్వర రావు</author>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+				<entry>
+				<title>‌శ్రీ శంకర భగవత్పాద విరచిత శ్రీ వివేక చూడామణి</title>
+				<feature></feature>
+				<page>0026-0028</page>
+				<allauthors>
+					<author type="1" sal="">శ్రీ జగద్గురు చంద్రశేఖర భారతీస్వామిభి‌ః</author>
+					<author type="2" sal="డా ||"> పుల్లెల శ్రీ రామచంద్రుడు </author>
+				</allauthors>
+			</entry>
+			<entry>
+				<title>ఘోరఉన్మాదము</title>
+				<feature></feature>
+				<page>0029-0030</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+			<entry>
+				<title>ధర్మమనగా నేమి?</title>
+				<feature></feature>
+				<page>0030-0033</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+			<entry>
+				<title>బ్రహ్మయజ్ఞమున వేదపఠనము</title>
+				<feature></feature>
+				<page>0034-0035</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+			<entry>
+				<title>వేద శబ్ద నిర్వచనము</title>
+				<feature></feature>
+				<page>0035-0036</page>
+				<allauthors>
+					<author type="" sal=""></author>
 				</allauthors>
 			</entry>
 			<entry>
 				<title>శృంగేరి వార్తలు</title>
 				<feature></feature>
-				<page>0026-0026</page>
-				<allauthors />
-			</entry>
-			<entry>
-				<title>శివ మానసిక పూజా (శ్రీ సదాశివ బ్రహ్మేంద్రస్వామి విరచితము)</title>
-				<feature></feature>
-				<page>0027-0032</page>
+				<page>0037-0039</page>
 				<allauthors>
-					<author type="" title="">శ్రీ శ్రీ చిదానందస్వామి శ్రీ రామచంద్ర కౌండిన్యులు</author>
+					<author type="" sal=""></author>
 				</allauthors>
 			</entry>
 			<entry>
-				<title>శ్రీ జగద్గురువుల చాతుర్మాస్యవ్రతము</title>
+				<title>పంచ మహా యజ్ఞములు</title>
 				<feature></feature>
-				<page>0033-0033</page>
+				<page>0040-0041</page>
 				<allauthors>
-					<author type="" title="">అకెళ్ల సత్యనారాయణమూర్తి</author>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+			<entry>
+				<title>ప్రణవము వేదత్రయ స్వరూపమే</title>
+				<feature></feature>
+				<page>0041-0043</page>
+				<allauthors>
+					<author type="" sal=""></author>
 				</allauthors>
 			</entry>
 		</part>
 		<part pnum="04-05" month="12-01" year="1986-1987" maasa="మార్గశిరము-పుష్యము" samvatsara="అక్షయ్">
 			<entry>
-				<title>శ్రీ శంకర భగవత్పాదాచార్య విరచిత లలితా పంచరత్న స్తోత్రము</title>
+				<title> శ్రీ శంకర భగవత్పాదాచార్య విరచిత లలితా పంచరత్న స్తోత్రము</title>
 				<feature></feature>
-				<page>0001-0001</page>
-				<allauthors />
-			</entry>
-			<entry>
-				<title>శ్రీ జగద్గురు సచ్చిదానంద శివాభినవ నృసింహభారతీ మహాస్వామి చరణుల ఉపదేశము</title>
-				<feature></feature>
-				<page>0002-0003</page>
-				<allauthors />
+				<page>0001</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
 			</entry>
 			<entry>
 				<title>శ్రీ జగద్గురు చంద్రశేఖరభారతీ మహాస్వామి చరణ స్మరణమ్</title>
 				<feature></feature>
-				<page>0003-0004</page>
-				<allauthors />
+				<page>0002</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
 			</entry>
 			<entry>
 				<title>శ్రీ జగద్గురు  శ్రీ అభినవ విద్యాతీర్థ మహాస్వామి చరుణల ఉపదేశము</title>
 				<feature></feature>
-				<page>0004-0006</page>
-				<allauthors />
+				<page>0002-0005</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
 			</entry>
 			<entry>
 				<title>శ్రీ జగద్గురు భారతీతీర్థ స్వామి చరణుల ఉపదేశము</title>
 				<feature></feature>
-				<page>0006-0011</page>
-				<allauthors />
-			</entry>
-			<entry>
-				<title>శంకర విజయధ్వజము</title>
-				<feature></feature>
-				<page>0012-0015</page>
+				<page>0006-0013</page>
 				<allauthors>
-					<author type="" title="">బ్రహ్మశ్రీ కొక్కొండ వేంకటరత్న శర్మగారు</author>
+					<author type="" sal=""></author>
 				</allauthors>
 			</entry>
 			<entry>
-				<title>శ్రీ మహాసన్నిధానమువారి దృష్టాంత నీతి కథలు</title>
+				<title>ప్రస్తావన</title>
 				<feature></feature>
-				<page>0015-0016</page>
-				<allauthors />
+				<page>0013-0014</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
 			</entry>
 			<entry>
+				<title>పంచాంగ విశేషములు</title>
+				<feature></feature>
+				<page>0014-0016</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+			<entry>
+				<title>సంపాదకుని చేమోడ్పు</title>
+				<feature></feature>
+				<page>0016</page>
+				<allauthors>
+					<author type="" sal="">తుమ్మలపల్లి రామలింగేశ్వరరావు</author>
+				</allauthors>
+			</entry>
+			<entry>
+				<title>శ్రీ విద్యారణ్యులవారి సంన్యాస గురువులు శ్రీ విద్యాశంకర తీర్థ</title>
+				<feature></feature>
+				<page>0017-0036</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+				<entry>
+				<title>శ్రీ విద్యారణ్యులవారు (గురువంశ కావ్యము ననుసరించి)</title>
+				<feature></feature>
+				<page>0036-0054</page>
+				<allauthors>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+				<entry>
 				<title>‌శ్రీ శంకర భగవత్పాద విరచిత శ్రీ వివేక చూడామణి</title>
 				<feature></feature>
-				<page>0016-0020</page>
+				<page>0055-0057</page>
 				<allauthors>
-					<author type="1" title="">శ్రీ జగద్గురు చంద్రశేఖర భారతీస్వామిభి‌ః</author>
-					<author type="2" title="డా ||">పుల్లెల శ్రీ రామచంద్రుడు</author>
+					<author type="1" sal="">శ్రీ జగద్గురు చంద్రశేఖర భారతీస్వామిభి‌ః</author>
+					<author type="2" sal="డా ||"> పుల్లెల శ్రీ రామచంద్రుడు </author>
 				</allauthors>
 			</entry>
-			<entry>
-				<title>దీపారాధన</title>
+				<entry>
+				<title>శంకర విజయధ్వజము</title>
 				<feature></feature>
-				<page>0021-0024</page>
-				<allauthors />
-			</entry>
-			<entry>
-				<title>కమ్యూనిజము-శ్రీ శంకర సిద్ధాంతము</title>
-				<feature></feature>
-				<page>0024-0026</page>
+				<page>0057-0060</page>
 				<allauthors>
-					<author type="" title="">శ్రీ తుమ్మలపల్లి రామలింగేశ్వర రావు</author>
+					<author type="" sal="బ్రహ్మశ్రీ">కొక్కొండ వేంకటరత్నశర్మగారు</author>
 				</allauthors>
 			</entry>
 			<entry>
 				<title>శృంగేరి వార్తలు</title>
 				<feature></feature>
-				<page>0026-0026</page>
-				<allauthors />
-			</entry>
-			<entry>
-				<title>శివ మానసిక పూజా (శ్రీ సదాశివ బ్రహ్మేంద్రస్వామి విరచితము)</title>
-				<feature></feature>
-				<page>0027-0032</page>
+				<page>0060-0062</page>
 				<allauthors>
-					<author type="" title="">శ్రీ శ్రీ చిదానందస్వామి శ్రీ రామచంద్ర కౌండిన్యులు</author>
+					<author type="" sal=""></author>
 				</allauthors>
 			</entry>
 			<entry>
-				<title>శ్రీ జగద్గురువుల చాతుర్మాస్యవ్రతము</title>
+				<title>గ్రంథావలోకనము</title>
 				<feature></feature>
-				<page>0033-0033</page>
+				<page>0062</page>
 				<allauthors>
-					<author type="" title="">అకెళ్ల సత్యనారాయణమూర్తి</author>
+					<author type="" sal=""></author>
+				</allauthors>
+			</entry>
+			<entry>
+				<title>శ్రీ మహాసన్నిధానమువారి దృష్టాంత నీతి కథలు</title>
+				<feature></feature>
+				<page>0067</page>
+				<allauthors>
+					<author type="" sal="">సంపాదకుడు</author>
 				</allauthors>
 			</entry>
 		</part>
