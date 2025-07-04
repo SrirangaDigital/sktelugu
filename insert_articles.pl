@@ -19,7 +19,7 @@ $sth11d=$dbh->prepare("DROP TABLE IF EXISTS article");
 $sth11d->execute();
 $sth11d->finish();
 
-$sth_enc=$dbh->prepare("set names utf8");
+$sth_enc=$dbh->prepare("set names utf8mb4");
 $sth_enc->execute();
 $sth_enc->finish();
 
@@ -34,7 +34,7 @@ year varchar(10),
 month varchar(10),
 maasa varchar(500),
 samvatsara varchar(500),
-titleid varchar(100), primary key(titleid)) ENGINE=MyISAM CHARACTER SET utf8 collate utf8_general_ci;");
+titleid varchar(100), primary key(titleid)) ENGINE=MyISAM CHARACTER SET utf8mb4 collate utf8mb4_unicode_ci;");
 $sth11r->execute();
 $sth11r->finish();
 
