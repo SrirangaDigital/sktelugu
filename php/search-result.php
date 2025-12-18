@@ -1,240 +1,214 @@
-<?php include("include_header.php");?>
-<main class="cd-main-content">
-        <div class="cd-scrolling-bg cd-color-2">
-            <div class="cd-container">
-                
+<?php include("../inc/include_header.php"); ?>
+<main class="container-fluid maincontent">
+<div class="row justify-content-center gapAboveLarge">
+<div class="col-sm-12 col-md-8">
+<div class="extra-info-bar fixed-top">
+    <h1 class="clr1 pt-5">தேடல்</h1>
+    <?php include("include_secondary_nav.php"); ?>
+</div>
+
 <?php
 
 include("connect.php");
 require_once("common.php");
 
-if(isset($_GET['author'])){$author = $_GET['author'];}else{$author = '';}
-if(isset($_GET['text'])){$text = $_GET['text'];}else{$text = '';}
-if(isset($_GET['title'])){$title = $_GET['title'];}else{$title = '';}
-if(isset($_GET['featid'])){$featid = $_GET['featid'];}else{$featid = '';}
-//~ if(isset($_GET['year1'])){$year1 = $_GET['year1'];}else{$year1 = '';}
-//~ if(isset($_GET['year2'])){$year2 = $_GET['year2'];}else{$year2 = '';}
+/* ------------------------- INPUTS ------------------------- */
 
-$text = entityReferenceReplace($text);
-$author = entityReferenceReplace($author);
-$title = entityReferenceReplace($title);
-$featid = entityReferenceReplace($featid);
-//~ $year1 = entityReferenceReplace($year1);
-//~ $year2 = entityReferenceReplace($year2);
+$author = isset($_GET['author']) ? trim($_GET['author']) : "";
+$title  = isset($_GET['title'])  ? trim($_GET['title'])  : "";
+$text   = isset($_GET['text'])   ? trim($_GET['text'])   : "";
+$featid = isset($_GET['featid']) ? trim($_GET['featid']) : "";
+$year1  = isset($_GET['year1'])  ? trim($_GET['year1'])  : "";
+$year2  = isset($_GET['year2'])  ? trim($_GET['year2'])  : "";
 
-$author = preg_replace("/[,\-]+/", " ", $author);
-$author = preg_replace("/[\t]+/", " ", $author);
-$author = preg_replace("/[ ]+/", " ", $author);
-$author = preg_replace("/^ +/", "", $author);
-$author = preg_replace("/ +$/", "", $author);
-$author = preg_replace("/  /", " ", $author);
-$author = preg_replace("/  /", " ", $author);
-
-$title = preg_replace("/[,\-]+/", " ", $title);
-$title = preg_replace("/[\t]+/", " ", $title);
-$title = preg_replace("/[ ]+/", " ", $title);
-$title = preg_replace("/^ +/", "", $title);
-$title = preg_replace("/ +$/", "", $title);
-$title = preg_replace("/  /", " ", $title);
-$title = preg_replace("/  /", " ", $title);
-
-$text = preg_replace("/[,\-]+/", " ", $text);
-$text = preg_replace("/[\t]+/", " ", $text);
-$text = preg_replace("/[ ]+/", " ", $text);
-$text = preg_replace("/^ +/", "", $text);
-$text = preg_replace("/ +$/", "", $text);
-$text = preg_replace("/  /", " ", $text);
-$text = preg_replace("/  /", " ", $text);
-
-if($title=='')
-{
-    $title='.*';
-}
-if($author=='')
-{
-    $author='.*';
-}
-if($featid=='')
-{
-    $featid='.*';
+if (
+    $title === "" &&
+    $author === "" &&
+    $text === "" &&
+    $featid === "" &&
+    $year1 === "" &&
+    $year2 === ""
+) {
+    echo '<p class="gapAboveLarge text-center mt-5 clr2">
+            Please enter atleast one search criteria.
+          </p>';
+    include("../inc/include_footer.php");
+    exit;
 }
 
-//~ ($year1 == '') ? $year1 = 1111 : $year1 = $year1;
-//~ ($year2 == '') ? $year2 = 9999 : $year2 = $year2;
-//~ 
-//~ if($year2 < $year1)
-//~ {
-    //~ $tmp = $year1;
-    //~ $year1 = $year2;
-    //~ $year2 = $tmp;
-//~ }
 
-$authorFilter = '';
-$titleFilter = '';
 
-$authors = preg_split("/ /", $author);
-$titles = preg_split("/ /", $title);
+/* Cleanup */
+$author = preg_replace("/\s+/", " ", $author);
+$title  = preg_replace("/\s+/", " ", $title);
 
-for($ic=0;$ic<sizeof($authors);$ic++)
-{
-    $authorFilter .= "and authorname REGEXP '" . $authors[$ic] . "' ";
-}
-for($ic=0;$ic<sizeof($titles);$ic++)
-{
-    $titleFilter .= "and title REGEXP '" . $titles[$ic] . "' ";
+/* ------------------------- QUERY BUILD ------------------------- */
+
+$conditions = [];
+$params = [];
+
+/* --- Title Filter (optional) --- */
+if ($title !== "") {
+    $words = explode(" ", $title);
+    foreach ($words as $w) {
+        $conditions[] = "title REGEXP ?";
+        $params[] = $w;
+    }
 }
 
-$authorFilter = preg_replace("/^and /", "", $authorFilter);
-$titleFilter = preg_replace("/^and /", "", $titleFilter);
-$titleFilter = preg_replace("/ $/", "", $titleFilter);
-
-if($text=='')
-{
-    $query="SELECT * FROM
-				(SELECT * FROM
-					(SELECT * FROM article WHERE $authorFilter) AS tb1
-				WHERE $titleFilter) AS tb2
-			WHERE featid REGEXP '$featid' ORDER BY volume, part, page";
-
+/* --- Author Filter (optional) --- */
+if ($author !== "") {
+    $words = explode(" ", $author);
+    foreach ($words as $w) {
+        $conditions[] = "authorname REGEXP ?";
+        $params[] = $w;
+    }
 }
-elseif($text!='')
-{
-    $text = rtrim($text);
-    if(preg_match("/^\"/", $text)) {
 
-        $stext = preg_replace("/\"/", "", $text);
-        $dtext = $stext;
+/* --- Feature Filter (optional) --- */
+if ($featid !== "") {
+    $conditions[] = "featid REGEXP ?";
+    $params[] = $featid;
+}
+
+/* --- Year Filter ONLY if selected --- */
+if ($year1 !== "" && $year2 !== "") {
+    if ($year2 < $year1) { $tmp = $year1; $year1 = $year2; $year2 = $tmp; }
+    $conditions[] = "year BETWEEN ? AND ?";
+    array_push($params, $year1, $year2);
+}
+
+/* ------------------------- TEXT SEARCH ------------------------- */
+
+$textSearch = false;
+if ($text !== "") {
+    $textSearch = true;
+
+    // Build MATCH AGAINST logic
+    if (preg_match('/^"/', $text)) {
+        $stext = str_replace('"', '', $text);
         $stext = '"' . $stext . '"';
+    } else if (strpos($text, '+') !== false) {
+        $stext = '+' . str_replace("+", " +", $text);
+    } else if (strpos($text, '|') !== false) {
+        $stext = str_replace("|", " ", $text);
+    } else {
+        $stext = preg_replace("/ /", "|", $text);
     }
-    elseif(preg_match("/\+/", $text)) {
 
-        $stext = preg_replace("/\+/", " +", $text);
-        $dtext = preg_replace("/\+/", "|", $text);
-        $stext = '+' . $stext;
-    }
-    elseif(preg_match("/\|/", $text)) {
-
-        $stext = preg_replace("/\|/", " ", $text);
-        $dtext = $text;
-    }
-    else {
-
-        $stext = $text;
-        $dtext = $stext = preg_replace("/ /", "|", $text);
-    }
-    
     $stext = addslashes($stext);
-    
-    $query="SELECT * FROM
-                (SELECT * FROM
-                    (SELECT * FROM
-                        (SELECT * FROM
-                            (SELECT *, MATCH (text) AGAINST ('$stext' IN BOOLEAN MODE) AS relevance FROM searchtable WHERE MATCH (text) AGAINST ('$stext' IN BOOLEAN MODE) ORDER BY relevance DESC) AS tb1
-                        WHERE $authorFilter) AS tb2
-                    WHERE $titleFilter) AS tb3
-                WHERE featid REGEXP '$featid') AS tb4
-            WHERE year between $year1 and $year2 ORDER BY volume, part, cur_page";
+
+    $textSQL = "
+        SELECT *, MATCH(text) AGAINST ('$stext' IN BOOLEAN MODE) AS relevance 
+        FROM searchtable 
+        WHERE MATCH(text) AGAINST ('$stext' IN BOOLEAN MODE)
+    ";
 }
 
-$result = $db->query($query); 
+/* ------------------------- FINAL QUERY ------------------------- */
+
+$whereSQL = count($conditions) ? "WHERE " . implode(" AND ", $conditions) : "";
+
+if(!$textSearch) {
+
+    /* --- Normal TITLE / AUTHOR search query --- */
+    $sql = "SELECT * FROM article $whereSQL ORDER BY volume, part, page";
+
+} else {
+
+    /* --- TEXT SEARCH with filters added --- */
+    $sql = "
+        SELECT * FROM (
+            $textSQL
+        ) AS t1
+        $whereSQL
+        ORDER BY relevance DESC, volume, part, cur_page
+    ";
+}
+
+/* ------------------------- EXECUTE QUERY ------------------------- */
+
+$stmt = $db->prepare($sql);
+
+/* bind parameters */
+if (count($params) > 0) {
+    $types = str_repeat("s", count($params)); 
+    $stmt->bind_param($types, ...$params);
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
 $num_results = $result ? $result->num_rows : 0;
 
-if ($num_results > 0)
-{
-    echo '<h1 class="clr1 gapBelowSmall">ఫలితం (లు) - ' . toTelugu(intval($num_results)) . '</h1>';
+/* ------------------------- RESULTS COUNT ------------------------- */
+
+if ($num_results > 0) {
+    echo '<div class="count gapAboveLarge">'.$num_results;
+    echo ($num_results > 1) ? ' results' : ' result';
+    echo '</div>';
 }
 
-$result = $db->query($query); 
-$num_rows = $result ? $result->num_rows : 0;
+/* ------------------------- PRINT RESULTS ------------------------- */
+
 $id = 0;
-if($num_rows > 0)
-{
-    while($row = $result->fetch_assoc())
-    {
-        $query3 = 'select feat_name from feature where featid=\'' . $row['featid'] . '\'';
-        $result3 = $db->query($query3);
-        $row3 = $result3->fetch_assoc();
-        $titleid = $row['titleid'];
-        
-        $dpart = preg_replace("/^0/", "", $row['part']);
-        $dpart = preg_replace("/\-0/", "-", $dpart);
-        $info = '';
-		if($row['month'] != '')
-		{
-			$info = $info . getTeluguMonth($row['month']);
-		}
-		if($row['year'] != '')
-		{
-			$info = $info . ' <span style="font-size: 0.95em">' . toTelugu(intval($row['year'])) . '</span>';
-		}
-		if($row['maasa'] != '')
-		{
-			$info = $info . ', ' . $row['maasa'] . '&nbsp;మాసము';
-		}
-		if($row['samvatsara'] != '')
-		{
-			$info = $info . ', ' . $row['samvatsara'] . '&nbsp;సంవత్సరము';
-		}
-		$info = preg_replace("/^,/", "", $info);
-		$info = preg_replace("/^ /", "", $info);
-        $sumne = preg_split('/-/' , $row['page']);
-		$row['page'] = $sumne[0];
-        if($result3){$result3->free();}
 
-        if ((strcmp($id, $row['titleid'])) != 0) {
+while ($row = $result->fetch_assoc()) {
 
-            echo ($id == "0") ? '<div class="article">' : '</div><div class="article">';
+    /* fetch feature name */
+    $res3 = $db->query("SELECT feat_name FROM feature WHERE featid='".$row['featid']."'");
+    $row3 = $res3->fetch_assoc();
 
-            echo '  <div class="gapBelowSmall">';
-            echo ($row3['feat_name'] != '') ? '     <span class="aFeature clr2"><a href="feat.php?feature=' . urlencode($row3['feat_name']) . '&amp;featid=' . $row['featid'] . '">' . $row3['feat_name'] . '</a></span> | ' : '';
-			echo '		<span class="aIssue clr5"><a href="toc.php?vol=' . $row['volume'] . '&amp;part=' . $row['part'] . '">సంపుట ' . toTelugu(intval($row['volume'])) . ', సంచికే ' . toTelugu($dpart) . ' <span class="font_resize">(' . $info . ')</span></a></span>';
-            echo '  </div>';
-            echo '	<span class="aTitle"><a target="_blank" href="bookReader.php?volume=' . $row['volume'] . '&amp;part=' . $row['part'] . '&amp;page=' . $row['page'] . '">' . $row['title'] . '</a></span>';
-			//~ DJVU link
-			//~ echo '	<span class="aTitle"><a target="_blank" href="../Volumes/' . $row['volume'] . '/' . $row['part'] . '/index.djvu?djvuopts&amp;page=' . $row['page'] . '.djvu&amp;zoom=page">' . $row['title'] . '</a></span><br />';
-            if($row['authid'] != 0) {
+    $dpart = preg_replace("/^0/", "", $row['part']);
+    $sumne = explode('-', $row['page']);
+    $row['page'] = $sumne[0];
 
-                echo '  <br /><span class="aAuthor">&nbsp;&mdash;';
-                $authids = preg_split('/;/',$row['authid']);
-                $authornames = preg_split('/;/',$row['authorname']);
-                $a=0;
-                foreach ($authids as $aid) {
+    /* new article block */
+    if ($id != $row['titleid']) {
 
-                    echo '<a class="delim" href="auth.php?authid=' . $aid . '&amp;author=' . urlencode($authornames[$a]) . '">' . $authornames[$a] . '</a> ';
-                    $a++;
-                }
+        echo ($id == 0) ? '<div class="article">' : '</div><div class="article">';
 
-                echo '  </span>';
-            }
-            //~ if($text != '')
-            //~ {
-                //~ echo '<br /><span class="aIssue">Text match found at page(s) : </span>';
-                //~ echo '<span class="aIssue"><a href="downloadPdf.php?titleid='.$titleid.'" target="_blank">' . intval($row['cur_page']) . '</a> </span>';
-            //~ }
-            echo '<br/><span class="downloadspan"><a href="downloadPdf.php?titleid='.$titleid.'" target="_blank">డౌన్లోడ్ పిడిఎఫ్</a> </span>';
-            $id = $row['titleid'];
+        echo '<div class="gapBelowSmall">';
+
+        if ($row3['feat_name'] != "") {
+            echo '<span class="aFeature clr2"><a href="feat.php?feature='.urlencode($row3['feat_name']).'&featid='.$row['featid'].'">'.$row3['feat_name'].'</a></span> | ';
         }
-        else 
-        {
-            if($text != '')
-            {
-                echo '&nbsp;<span class="aIssue"><a href="downloadPdf.php?titleid='.$titleid.'">' . intval($row['cur_page']) . '</a> </span>';
+
+        echo '<span class="aIssue clr5"><a href="toc.php?vol='.$row['volume'].'&part='.$row['part'].'">';
+        echo ($row['part'] == '99')
+                ? 'వాల్యూమ్ '.intval($row['volume']).', ఎపిసోడ్'
+                : 'వాల్యూమ్ '.intval($row['volume']).', ఎపిసోడ్ '.$dpart;
+        echo '</a></span></div>';
+
+        $part = ($row['part']=='99') ? 'ವಿಶೇಷ ಸಂಚಿಕೆ' : $row['part'];
+
+        echo '<span class="aTitle"><a target="_blank" href="bookreader/templates/book.php?volume='.$row['volume'].'&part='.$part.'&page='.$row['page'].'">'.$row['title'].'</a></span>';
+
+        if ($row['authid'] != 0) {
+            echo '<br><span class="aAuthor itl">&mdash; ';
+            $authids = explode(";", $row['authid']);
+            $authornames = explode(";", $row['authorname']);
+            foreach ($authids as $idx => $aid) {
+                echo '<a class="delim" href="auth.php?authid='.$aid.'&author='.urlencode($authornames[$idx]).'">'.$authornames[$idx].'</a> ';
             }
-            $id = $row['titleid'];
+            echo '</span>';
         }
+
+        if ($textSearch) {
+            echo '<br><span class="aIssue">Text match at page : ';
+            echo '<a target="_blank" href="bookreader/templates/book.php?volume='.$row['volume'].'&part='.$row['part'].'&page='.$row['cur_page'].'">'.intval($row['cur_page']).'</a></span>';
+        }
+
+        $id = $row['titleid'];
     }
 }
-else
-{
-    echo '<a href="search.php" class="sml clr2">Sorry! No results. Hit the back button or click here to try again.</a>';
+
+if ($num_results == 0) {
+    echo '<p class="gapAboveLarge text-center mt-5"><a href="search.php" class="sml clr2">Sorry! No results. Try again.</a></p>';
 }
 
-if($result){$result->free();}
-$db->close();
-
 ?>
-                </div> <!-- article card -->
-            </div> <!-- cd-container -->
-        </div> <!-- cd-scrolling-bg -->
-    </main> <!-- cd-main-content -->
-<?php include("include_footer.php");?>
+</div>
+</div>
+</div>
+</main>
+<?php include("../inc/include_footer.php"); ?>

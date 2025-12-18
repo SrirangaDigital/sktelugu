@@ -1,13 +1,14 @@
 #!/bin/sh
 
 host="localhost"
-db="sktelugu"
+db="sk_telugu"
 usr="root"
-pwd="Mysql@123"
+# pwd="myname@A1"
+pwd="vinroot"
 
-echo "CREATE DATABASE IF NOT EXISTS $db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" | /usr/local/mysql/bin/mysql -u$usr -p$pwd
+echo "CREATE DATABASE IF NOT EXISTS $db CHARACTER SET utf8 COLLATE utf8_general_ci;" | /usr/bin/mysql -u$usr -p$pwd
 
 perl insert_author.pl $host $db $usr $pwd
 perl insert_feat.pl $host $db $usr $pwd
 perl insert_articles.pl $host $db $usr $pwd
-perl ocr.pl $host $db $usr $pwd
+# perl ocr.pl $host $db $usr $pwd

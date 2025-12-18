@@ -2,14 +2,13 @@
 	exec('find ../ReadWrite/ -mmin +10 -type f -name "*.pdf" -exec rm {} \;');
 	$downloadURL = '../index.php';
 	$titleid = $_GET['titleid'];
-	
 	if(isset($_GET['titleid']) && $_GET['titleid'] != "")
 	{
 		include("connect.php");
 		$vars = explode('_', $titleid);
-		$volume = $vars[1];
-		$part = $vars[2];
-		$page = $vars[3];
+		$volume = $vars[2];
+		$part = $vars[3];
+		$page = $vars[4];
 		$str = '';
 		$pageRangeList = preg_split('/;/',$page);
 		$page = '';
@@ -24,7 +23,6 @@
 		$page = preg_replace("/_$/", "" ,$page);
 		$pdfList = '';
 		$query1 = "select cur_page from ocr where volume = '$volume' and part = '$part' and (cur_page between $str)";
-		echo $query1;
 		
 		$result1 = $db->query($query1) or die("query problem"); 
 		

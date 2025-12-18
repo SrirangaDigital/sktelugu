@@ -13,15 +13,10 @@ $sth11d=$dbh->prepare("DROP TABLE IF EXISTS ocr");
 $sth11d->execute();
 $sth11d->finish();
 
-$sth_enc=$dbh->prepare("set names utf8");
-$sth_enc->execute();
-$sth_enc->finish();
-
-
 $sth11=$dbh->prepare("CREATE TABLE ocr(volume varchar(10),
 part varchar(10),
 cur_page varchar(10),
-text varchar(5000))  ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 collate utf8mb4_unicode_ci;");
+text varchar(5000)) ENGINE=MyISAM");
 
 $sth11->execute();
 $sth11->finish(); 

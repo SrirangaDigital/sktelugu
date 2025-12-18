@@ -1,10 +1,11 @@
-<?php include("include_header.php");?>
-<main class="cd-main-content">
-		<div class="cd-scrolling-bg cd-color-2">
-			<div class="cd-container">
-				<h1 class="clr1">లేఖనములు</h1>
- 				<div class="alphabet gapBelowSmall gapAboveSmall"> 
-					<span class="letter"><a href="articles.php?letter=అ">అ</a></span>
+<?php include("../inc/include_header.php");?>
+<main class="container-fluid maincontent" data-bs-theme="dark">
+		<div class="row justify-content-center gapAboveLarge">
+			<div class="col-sm-12 col-md-8">
+				<div class="extra-info-bar fixed-top">	
+					<h1 class="clr1 pt-5">వ్యాసాలు</h1>
+					<div class="alphabet mt-2">
+						<span class="letter"><a href="articles.php?letter=అ">అ</a></span>
 					<span class="letter"><a href="articles.php?letter=ఆ">ఆ</a></span>
 					<span class="letter"><a href="articles.php?letter=ఇ">ఇ</a></span>
 					<span class="letter"><a href="articles.php?letter=ఈ">ఈ</a></span>
@@ -45,7 +46,14 @@
 					<span class="letter"><a href="articles.php?letter=హ">హ</a></span>
 					<span class="letter"><a href="articles.php?letter=ళ">ళ</a></span>
 					<span class="letter"><a href="articles.php?letter=other">#</a></span>
+					</div>
+<?php include("include_secondary_nav.php");?>
 				</div>
+			</div>
+			<div class="col-sm-12 col-md-8 gapAbove gapBelowLargeSpecial">
+				<p class="mb-sm-5">&nbsp;</p>
+			</div>
+			<div class="col-sm-12 col-md-8">		
 <?php
 
 include("connect.php");
@@ -53,37 +61,34 @@ require_once("common.php");
 
 if(isset($_GET['letter']))
 {
- 	$letter=$_GET['letter'];
+	$letter=$_GET['letter'];
 	
- 	if(!(isValidLetter($letter)))
- 	{
- 		echo '<span class="aFeature clr2">Invalid URL</span>';
- 		echo '</div> <!-- cd-container -->';
- 		echo '</div> <!-- cd-scrolling-bg -->';
- 		echo '</main> <!-- cd-main-content -->';
- 		include("include_footer.php");
+	if(!(isValidLetter($letter)))
+	{
+		echo '<p class="aFeature clr2 mt-5 text-center">Invalid URL</p>';
+		echo '</div>';
+		echo '</div>';
+		echo '</main>';
+		include("include_footer.php");
 
-         exit(1);
- 	}
+        exit(1);
+	}
 	
- 	($letter == '') ? $letter = 'అ' : $letter = $letter;
- }
- else
- {
- 	$letter = 'అ';
- }
-if($letter == 'other')
-{
-	$query = "SELECT * FROM article WHERE title REGEXP '^[A-Za-z]'";
+	($letter == '') ? $letter = 'అ' : $letter = $letter;
 }
 else
 {
-	$query = "select * from article where title like '$letter%'  union select * from article where title like '\"$letter%' union select * from article where title like '\'$letter%' order by TRIM(BOTH '\'' FROM TRIM(BOTH '\"' FROM title))";
+	$letter = 'అ';
 }
-
-//$query = "SELECT * FROM article ORDER BY TRIM(BEGIN '\"' FROM title)";
-//$query = "SELECT * FROM article ORDER BY TRIM(BOTH '\'' FROM TRIM(BOTH '\"' FROM title))";
-
+if($letter == 'other')
+{
+	// $query = "SELECT * FROM article WHERE title REGEXP '^[A-Za-z]'";
+	$query = "SELECT * FROM article WHERE title LIKE '^[A-Za-z]'";
+}
+else
+{
+	$query = "select * from article where title like '$letter%' union select * from article where title like '\"$letter%' union select * from article where title like '\'$letter%' order by volume, part, TRIM(BOTH '\'' FROM TRIM(BOTH '\"' FROM title))";
+}
 
 $result = $db->query($query); 
 $num_rows = $result ? $result->num_rows : 0;
@@ -95,69 +100,77 @@ if($num_rows > 0)
 		$query3 = 'select feat_name from feature where featid=\'' . $row['featid'] . '\'';
 		$result3 = $db->query($query3); 
 		$row3 = $result3->fetch_assoc();
-		$titleid = $row['titleid'];
+		
 		$dpart = preg_replace("/^0/", "", $row['part']);
 		$dpart = preg_replace("/\-0/", "-", $dpart);
 		$info = '';
 		if($row['month'] != '')
 		{
-			$info = $info . getTeluguMonth($row['month']);
+			$info = $info . getMonth($row['month']);
 		}
 		if($row['year'] != '')
 		{
-			$info = $info . ' <span class="font_size">' . toTelugu(intval($row['year'])) . '</span>';
+			$info = $info . ' <span class="font_size">' . intval($row['year']) . '</span>';
 		}
 		if($row['maasa'] != '')
 		{
-			$info = $info . ', ' . $row['maasa'] . '&nbsp;మాసము';
+			$info = $info . ', ' . $row['maasa'] . '&nbsp;ಮಾಸ';
 		}
 		if($row['samvatsara'] != '')
 		{
-			$info = $info . ', ' . $row['samvatsara'] . '&nbsp;సంవత్సరము';
+			$info = $info . ', ' . $row['samvatsara'] . '&nbsp;ಸಂವತ್ಸರ';
 		}
 		$info = preg_replace("/^,/", "", $info);
 		$info = preg_replace("/^ /", "", $info);
-		
+
 		$sumne = preg_split('/-/' , $row['page']);
 		$row['page'] = $sumne[0];
+
 		if($result3){$result3->free();}
 
 		echo '<div class="article">';
 		echo '	<div class="gapBelowSmall">';
 		echo ($row3['feat_name'] != '') ? '		<span class="aFeature clr2"><a href="feat.php?feature=' . urlencode($row3['feat_name']) . '&amp;featid=' . $row['featid'] . '">' . $row3['feat_name'] . '</a></span> | ' : '';
-		echo '		<span class="aIssue clr5"><a href="toc.php?vol=' . $row['volume'] . '&amp;part=' . $row['part'] . '">సంపుట ' . toTelugu(intval($row['volume'])) . ', సంచికే ' . toTelugu($dpart) . ' <span class="font_resize">(' . $info . ')</span></a></span>';
+		// if($info != '')
+		// {
+		// 	echo '<span class="aIssue clr5"><a href="toc.php?vol=' . $row['volume'] . '&amp;issue=' . $row['issue'] . '">மலர் ' . intval($row['volume']) . ', இதழ் ' . $dissue . ' <span class="font_resize">(' . $info . ')</span></a></span>';
+		// }
+		// else
+		// {
+		// 	echo '<span class="aIssue clr5"><a href="toc.php?vol=' . $row['volume'] . '&amp;issue=' . $row['issue'] . '">மலர் ' . intval($row['volume']) . ', இதழ் ' . $dissue . '</a></span>';
+		// }
 		echo '	</div>';
-		//~ echo '	<span class="aTitle"><a target="_blank" href="bookReader.php?volume=' . $row['volume'] . '&amp;part=' . $row['part'] . '&amp;page=' . $row['page'] . '">' . $row['title'] . '</a></span>';
-		//~ DJVU link
-		echo '	<span class="aTitle"><a target="_blank" href="../Volumes/djvu/' . $row['volume'] . '/' . $row['part'] . '/index.djvu?djvuopts&amp;page=' . $row['page'] . '.djvu&amp;zoom=page">' . $row['title'] . '</a></span>';
+		// var_dump($row['part']); exit(0);
+		echo '	<span class="aTitle"><a target="_blank" href="bookreader/templates/book.php?volume=' . $row['volume'] . '&part=' . $row['part'] . '&page=' . $row['page'] . '">' . $row['title'] . '</a></span><br />';
+		// echo '	<span class="aTitle"><a target="_blank" href="../Volumes/djvu/' . $row['volume'] . '/' . $row['issue'] . '/index.djvu?djvuopts&amp;page=' . $row['page'] . '.djvu&amp;zoom=page">' . $row['title'] . '</a></span><br />';
 		if($row['authid'] != 0) {
 
-			echo '<br /><span class="aAuthor">&nbsp;&nbsp;&mdash;';
+			echo '	<span class="aAuthor">&nbsp;&nbsp;&mdash;';
 			$authids = preg_split('/;/',$row['authid']);
 			$authornames = preg_split('/;/',$row['authorname']);
 			$a=0;
 			foreach ($authids as $aid) {
 
-				echo '<a class="delim" href="auth.php?authid=' . $aid . '&amp;author=' . urlencode($authornames[$a]) . '">' . $authornames[$a] . '</a> ';
+				echo '<a href="auth.php?authid=' . $aid . '&amp;author=' . urlencode($authornames[$a]) . '">' . $authornames[$a] . '</a> ';
 				$a++;
 			}
 			
-			echo '	</span>';
+			echo '	</span><br/>';
 		}
-		echo '<br/><span class="downloadspan"><a target="_blank" href="downloadPdf.php?titleid='.$titleid.'">డౌన్లోడ్ పిడిఎఫ్</a></span>';
+		// echo '<span class="downloadspan"><a target="_blank" href="downloadPdf.php?titleid='.$titleid.'">Download Pdf</a></span>';
 		echo '</div>';
 	}
 }
 else
 {
-	echo '<span class="sml">ఇక్కడ \'' . $letter . '\' అక్షరనుండి ప్రారంభించె లేఖనములు దొరకలేదు';
+	// echo '<p class="clr2 sml mt-5 text-center">கடிதம் \'' . $letter . '\' என்று ஆரம்பத்தில் எந்த கட்டுரைகள் உள்ளன</p>';
 }
 
 if($result){$result->free();}
 $db->close();
 
 ?>
-			</div> <!-- cd-container -->
-		</div> <!-- cd-scrolling-bg -->
-	</main> <!-- cd-main-content -->
-<?php include("include_footer.php");?>
+			</div> 
+		</div> 
+	</main> 
+<?php include("../inc/include_footer.php");?>

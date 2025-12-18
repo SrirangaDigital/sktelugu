@@ -1,7 +1,8 @@
 <?php
 $user='root';
-$password='mysql';
-$database='sktelugu';
+// $password='Mysql@123';
+$password='vinroot';
+$database='sk_telugu';
 $type_code = '01';
 
 $db = @new mysqli('localhost', "$user", "$password", "$database");

@@ -177,23 +177,8 @@ function getMonth($month)
 	$month = preg_replace('/10/', 'ಅಕ್ಟೋಬರ್', $month);
 	$month = preg_replace('/11/', 'ನವೆಂಬರ್', $month);
 	$month = preg_replace('/12/', 'ಡಿಸೆಂಬರ್', $month);
-	
-	return $month;
-}
-function getTeluguMonth($month)
-{
-	$month = preg_replace('/01/', 'జనవరి', $month);
-	$month = preg_replace('/02/', 'ఫిబ్రవరి', $month);
-	$month = preg_replace('/03/', 'మార్చ్', $month);
-	$month = preg_replace('/04/', 'ఏప్రిల్', $month);
-	$month = preg_replace('/05/', 'మే', $month);
-	$month = preg_replace('/06/', 'జూన్', $month);
-	$month = preg_replace('/07/', 'జులై', $month);
-	$month = preg_replace('/08/', 'ఆగష్టు', $month);
-	$month = preg_replace('/09/', 'సెప్టెంబర్', $month);
-	$month = preg_replace('/10/', 'అక్టోబర్', $month);
-	$month = preg_replace('/11/', 'నవంబర్', $month);
-	$month = preg_replace('/12/', 'డిసెంబర్', $month);
+
+	$month = preg_replace('/-/', ' &ndash; ', $month);
 	
 	return $month;
 }
@@ -209,21 +194,6 @@ function toKannada($value)
 	$value = preg_replace('/7/', '೭', $value);
 	$value = preg_replace('/8/', '೮', $value);
 	$value = preg_replace('/9/', '೯', $value);
-	
-	return $value;
-}
-function toTelugu($value)
-{
-	$value = preg_replace('/0/', '౦', $value);
-	$value = preg_replace('/1/', '౧', $value);
-	$value = preg_replace('/2/', '౨', $value);
-	$value = preg_replace('/3/', '౩', $value);
-	$value = preg_replace('/4/', '౪', $value);
-	$value = preg_replace('/5/', '౫', $value);
-	$value = preg_replace('/6/', '౬', $value);
-	$value = preg_replace('/7/', '౭', $value);
-	$value = preg_replace('/8/', '౮', $value);
-	$value = preg_replace('/9/', '౯', $value);
 	
 	return $value;
 }

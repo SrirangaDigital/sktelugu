@@ -6,7 +6,7 @@
       function onLoad() {
         var options = {
           sourceLanguage: 'en', // or google.elements.transliteration.LanguageCode.ENGLISH,
-          destinationLanguage: ['te'], // or [google.elements.transliteration.LanguageCode.HINDI],
+          destinationLanguage: ['kn'], // or [google.elements.transliteration.LanguageCode.HINDI],
           transliterationEnabled: true
         };
         // Create an instance on TransliterationControl with the required

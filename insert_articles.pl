@@ -13,28 +13,34 @@ open(IN,"<:utf8","sktelugu.xml") or die "can't open sktelugu.xml\n";
 
 my $dbh=DBI->connect("DBI:mysql:database=$db;host=$host","$usr","$pwd");
 
+# $dbh->do("TRUNCATE TABLE article");
+
 #vnum, number, month, year, title, feature, authid, page, 
 
 $sth11d=$dbh->prepare("DROP TABLE IF EXISTS article");
 $sth11d->execute();
 $sth11d->finish();
 
-$sth_enc=$dbh->prepare("set names utf8mb4");
+$sth_enc=$dbh->prepare("set names utf8");
 $sth_enc->execute();
 $sth_enc->finish();
 
-$sth11r=$dbh->prepare("CREATE TABLE article(title varchar(500),
-authid varchar(200),
-authorname varchar(1000),
-featid varchar(10),
-page varchar(50), 
-volume varchar(3),
-part varchar(10),
-year varchar(10), 
-month varchar(10),
-maasa varchar(500),
-samvatsara varchar(500),
-titleid varchar(100), primary key(titleid)) ENGINE=MyISAM CHARACTER SET utf8mb4 collate utf8mb4_unicode_ci;");
+$sth11r=$dbh->prepare("CREATE TABLE article(
+    title varchar(500),
+    authid varchar(200),
+    authorname varchar(1000),
+    featid varchar(10),
+    page varchar(50), 
+    volume varchar(3),
+    part varchar(10),
+    year varchar(10), 
+    month varchar(10),
+    maasa varchar(50),
+    samvatsara varchar(50),
+    titleid varchar(100),
+    primary key(titleid)
+) ENGINE=MyISAM CHARACTER SET utf8 collate utf8_general_ci;");
+
 $sth11r->execute();
 $sth11r->finish();
 
@@ -47,16 +53,38 @@ while($line)
 		$volume = $1;
 		print $volume . "\n";
 	}
-	elsif($line =~ /<part pnum="(.*)" month="(.*)" year="(.*)" maasa="(.*)" samvatsara="(.*)">/)
+	elsif ($line =~ /<part inum="(.*?)"\s+month="(.*?)"\s+year="(.*?)"\s+info="(.*?)"\s+maasa="(.*?)"\s+samvatsara="(.*?)">/)
 	{
-		$part = $1;
-		$month = $2;
-		$year = $3;
-		$maasa = $4;
-		$samvatsara = $5;
-		$count = 0;
-		$prev_pages = "";
-	}	
+    $part       = $1;
+    $month      = $2;
+    $year       = $3;
+    $info       = $4;     # not used, but available
+    $maasa      = $5;
+    $samvatsara = $6;
+
+    $count = 0;
+    $prev_pages = "";
+	}
+	elsif ($line =~ /<part\b(.*?)>/)
+	{
+    my $attrs = $1;
+
+    ($part)       = $attrs =~ /pnum="(.*?)"/;
+    ($month)      = $attrs =~ /month="(.*?)"/;
+    ($year)       = $attrs =~ /year="(.*?)"/;
+    ($maasa)      = $attrs =~ /maasa="(.*?)"/;
+    ($samvatsara) = $attrs =~ /samvatsara="(.*?)"/;
+
+    $part       ||= "";
+    $month      ||= "";
+    $year       ||= "";
+    $maasa      ||= "";
+    $samvatsara ||= "";
+
+    $count = 0;
+    $prev_pages = "";
+	}
+
 	elsif($line =~ /<title>(.*)<\/title>/)
 	{
 		$title = $1;
@@ -72,21 +100,23 @@ while($line)
 		if($page eq $prev_pages)
 		{
 			$count++;
-			$id = "sktelugu_" . $volume . "_" . $part . "_" . $page . "_" . $count; 
+			$id = "shankara_krupa_" . $volume . "_" . $part . "_" . $page . "_" . $count; 
 		}
 		else
 		{
-			$id = "sktelugu_" . $volume . "_" . $part . "_" . $page . "_0";
+			$id = "shankara_krupa_" . $volume . "_" . $part . "_" . $page . "_0";
 			$count = 0;
 		}
 		$prev_pages = $page;
 	}
-	elsif($line =~ /<author type="(.*)" title="(.*)">(.*)<\/author>/)
+
+	elsif ($line =~ /<author type="(.*?)"\s+sal="(.*?)">(.*?)<\/author>/)
 	{
-		$authorname = $3;
-		$authids = $authids . ";" . get_authid($authorname);
-		$author_name = $author_name . ";" .$authorname;
+    $authorname = $3;
+    $authids    .= ";" . get_authid($authorname);
+    $author_name .= ";" . $authorname;
 	}
+
 	elsif($line =~ /<allauthors \/>/)
 	{
 		$authids = "0";
@@ -100,6 +130,17 @@ while($line)
 		$author_name = "";
 		$id = "";
 	}
+	elsif($line =~ /<page>(.*)<\/page>/)
+	{
+    $page = $1;
+
+    # If page field is empty, create a unique placeholder
+    if ($page eq "" || $page =~ /^\s*$/) 
+    	{
+        $page = "nopage";
+    	}
+	}
+
 	$line = <IN>;
 }
 
@@ -119,7 +160,7 @@ sub insert_article()
 	$samvatsara =~ s/'/\\'/g;
 
 	
-	$sth1=$dbh->prepare("insert into article values('$title','$authids','$author_name','$featid','$page','$volume','$part','$year','$month','$maasa','$samvatsara','$id')");
+	$sth1=$dbh->prepare("REPLACE into article values('$title','$authids','$author_name','$featid','$page','$volume','$part','$year','$month','$maasa','$samvatsara','$id')");
 	
 	$sth1->execute();
 	$sth1->finish();

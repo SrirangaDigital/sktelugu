@@ -1,7 +1,7 @@
-<?php include("include_header.php");?>
-<main class="cd-main-content">
-		<div class="cd-scrolling-bg cd-color-2">
-			<div class="cd-container">
+<?php include("../inc/include_header.php");?>
+<main class="container-fluid maincontent">
+		<div class="row justify-content-center gapAboveLarge">
+
 <?php
 
 include("connect.php");
@@ -10,16 +10,22 @@ require_once("common.php");
 if(isset($_GET['feature'])){$feat_name = $_GET['feature'];}else{$feat_name = '';}
 if(isset($_GET['featid'])){$featid = $_GET['featid'];}else{$featid = '';}
 
-echo '<h1 class="clr1 gapBelowSmall">ವಿಶೇಷ ಲೇಖನ &mdash; ' . $feat_name . '</h1>';
+echo '<div class="col-sm-12 col-md-8">';
+echo '<div class="extra-info-bar fixed-top">';	
+echo '<h1 class="clr1 pt-5">மலர்கள் &gt; நிலையான தலைப்புகள் &gt; ' . $feat_name . '</h1>';
+include("include_secondary_nav.php");
+echo '</div>';
+echo '</div>';
 
 $feat_name = entityReferenceReplace($feat_name);
 
 if(!(isValidFeature($feat_name) && isValidFeatid($featid)))
 {
-	echo '<span class="aFeature clr2">Invalid URL</span>';
-	echo '</div> <!-- cd-container -->';
-	echo '</div> <!-- cd-scrolling-bg -->';
-	echo '</main> <!-- cd-main-content -->';
+	echo '<div class="col-sm-12 col-md-8">';
+	echo '<p class="aFeature clr2 text-center gapAboveLarge">Invalid URL</p>';
+	echo '</div>';
+	echo '</div>';
+	echo '</main>';
 	include("include_footer.php");
 
     exit(1);
@@ -29,6 +35,8 @@ $query = 'select * from article where featid=\'' . $featid . '\' order by volume
 
 $result = $db->query($query); 
 $num_rows = $result ? $result->num_rows : 0;
+
+echo '<div class="col-sm-12 col-md-8 gapAbove">';
 
 if($num_rows > 0)
 {
@@ -40,7 +48,7 @@ if($num_rows > 0)
 		$titleid = $row['titleid'];
 		if($row['month'] != '')
 		{
-			$info = $info . getTeluguMonth($row['month']);
+			$info = $info . getMonth($row['month']);
 		}
 		if($row['year'] != '')
 		{
@@ -48,11 +56,11 @@ if($num_rows > 0)
 		}
 		if($row['maasa'] != '')
 		{
-			$info = $info . ', ' . $row['maasa'] . '&nbsp;మాసము';
+			$info = $info . ', ' . $row['maasa'] . '&nbsp;ಮಾಸ';
 		}
 		if($row['samvatsara'] != '')
 		{
-			$info = $info . ', ' . $row['samvatsara'] . '&nbsp;సంవత్సరము';
+			$info = $info . ', ' . $row['samvatsara'] . '&nbsp;ಸಂವತ್ಸರ';
 		}
 		$info = preg_replace("/^,/", "", $info);
 		$info = preg_replace("/^ /", "", $info);
@@ -60,25 +68,26 @@ if($num_rows > 0)
 		$row['page'] = $sumne[0];
 		echo '<div class="article">';
 		echo '	<div class="gapBelowSmall">';
-		echo '		<span class="aIssue clr5"><a href="toc.php?vol=' . $row['volume'] . '&amp;part=' . $row['part'] . '">సంపుట ' . toTelugu(intval($row['volume'])) . ', సంచికే ' . toTelugu($dpart) . ' <span class="font_resize">(' . $info . ')</span></a></span>';
-		echo '	</div>';
-		//~ echo '	<span class="aTitle"><a target="_blank" href="bookReader.php?volume=' . $row['volume'] . '&amp;part=' . $row['part'] . '&amp;page=' . $row['page'] . '">' . $row['title'] . '</a></span>';
-		//~ DJVU link
-		echo '	<span class="aTitle"><a target="_blank" href="../Volumes/djvu/' . $row['volume'] . '/' . $row['part'] . '/index.djvu?djvuopts&amp;page=' . $row['page'] . '.djvu&amp;zoom=page">' . $row['title'] . '</a></span>';
-		if($row['authid'] != 0)
-		{
-			echo '	<span class="aAuthor">&nbsp;&mdash;';
+		echo ($row3['feat_name'] != '') ? '<span class="aFeature clr2"><a href="feat.php?feature=' . urlencode($row3['feat_name']) . '&amp;featid=' . $row['featid'] . '">' . $row3['feat_name'] . '</a></span> | ' : '';
+		echo '<span class="aIssue clr5"><a href="toc.php?vol=' . $row['volume'] . '&amp;part=' . $row['part'] . '">';
+		echo ($row['part'] == '99') ? 'மலர் ' . intval($row['volume']) . ', ವಿಶೇಷ ಸಂಚಿಕೆ' : '  மலர் ' . intval($row['volume']) . ', இதழ் ' . $dpart;
+		// echo  ' <span class="font_resize">(' . $info . ')</span>' .'</a></span>';
+		echo '</div>';
+		$part = ($row['part'] == '99') ? 'ವಿಶೇಷ ಸಂಚಿಕೆ' : $row['part'];
+		echo '	<span class="aTitle"><a target="_blank" href="bookreader/templates/book.php?volume=' . $row['volume'] . '&part=' . $part . '&page=' . $row['page'] . '">' . $row['title'] . '</a></span><br />';
+		if($row['authid'] != 0) {
+
+			echo '	<span class="aAuthor itl">&mdash; ';
 			$authids = preg_split('/;/',$row['authid']);
 			$authornames = preg_split('/;/',$row['authorname']);
 			$a=0;
-			foreach ($authids as $aid)
-			{
-				echo '<a class="delim" href="auth.php?authid=' . $aid . '&amp;author=' . urlencode($authornames[$a]) . '">' . $authornames[$a] . '</a> ';
+			foreach ($authids as $aid) {
+
+				echo '<a href="auth.php?authid=' . $aid . '&amp;author=' . urlencode($authornames[$a]) . '">' . $authornames[$a] . '</a> ';
 				$a++;
 			}
-			echo '	</span>';
+			echo '</span><br/>';
 		}
-		echo '<br/><span class="downloadspan"><a target="_blank" href="downloadPdf.php?titleid='.$titleid.'">డౌన్లోడ్ పిడిఎఫ్</a></span>';
 		echo '</div>';
 	}
 }
@@ -87,7 +96,7 @@ if($result){$result->free();}
 $db->close();
 
 ?>
-			</div> <!-- cd-container -->
-		</div> <!-- cd-scrolling-bg -->
-	</main> <!-- cd-main-content -->
-<?php include("include_footer.php");?>
+			</div>
+		</div>
+	</main>
+<?php include("../inc/include_footer.php");?>

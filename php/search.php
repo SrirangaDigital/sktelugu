@@ -1,28 +1,26 @@
-<?php include("include_header.php");?>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script src="js/input_method.js"></script>
-<main class="cd-main-content">
-        <div class="cd-scrolling-bg cd-color-2">
-            <div class="cd-container">
-                <h1 class="clr1 gapBelow">శోధన</h1>
+<?php include("../inc/include_header.php");?>
+<main class="container-fluid maincontent">
+        <div class="row justify-content-center gapAboveLarge">
+            <div class="col-sm-12 col-md-8">
+                <div class="extra-info-bar fixed-top">  
+                    <!-- <h1 class="clr1 pt-5">Archive &gt; Search</h1>தேடல் -->
+                    <h1 class="clr1 pt-5">శోధన</h1>
+<?php include("include_secondary_nav.php");?>
+                </div>    
 <?php
 
 include("connect.php");
 require_once("common.php");
 
 ?>
-                <div class="archive_search">
-                    <form method="get" action="search-result.php">
-                        <table>
-                            <tr>
-                                <td class="left"><label for="textfield2" class="titlespan">లేఖనములు </label></td>
-                                <td class="right"><input name="title" type="text" class="titlespan wide" id="textfield2" maxlength="150"/></td>
-                            </tr>
-                            <tr>
-                                <td class="left"><label for="autocomplete" class="titlespan">రచయితలు</label></td>
-                                <td class="right"><input name="author" type="text" class="titlespan wide" id="autocomplete" maxlength="150" />
+                <div class="archive_search gapAboveLarge">
+                    <form method="get" action="search-result.php" class="row justify-content-center">
+                        <div class="col-11 col-md-5">
+                            <label for="textfield2" class="titlespan form-label" >లేఖనములు</label>
+                            <input name="title" type="text" class="form-control titlespan wide" id="textfield2" maxlength="150" />
+                            <label for="autocomplete" class="form-label titlespan mt-2 " >లేఖకకుడు</label>
+                            <input name="author" type="text" class="form-control titlespan wide" id="autocomplete" maxlength="150" />
 <?php
-
 $query_ac = "select * from author order by authorname";
 $result_ac = $db->query($query_ac);
 $num_rows_ac = $result_ac ? $result_ac->num_rows : 0;
@@ -38,61 +36,131 @@ if($num_rows_ac > 0)
     $source_ac = preg_replace("/^\, /", "", $source_ac);
 }
 
-echo $source_ac . ']});</script></td>';
-echo '</tr>';
+echo $source_ac . ']});</script>';
 if($result_ac){$result_ac->free();}
 
 ?>
-<!--
-                            <tr>
-                                <td class="left"><label class="titlespan">ವಿಶೇಷ ಲೇಖನ</label></td>
-                                <td class="right">
-                                    <select name="featid" class="titlespan wide">
-                                        <option value="">&nbsp;</option>
--->
+                        <label class="titlespan form-label mt-2">స్థిర శీర్షికెములు</label>
+                        <select name="featid" class="form-select titlespan wide">
+                            <option value="">&nbsp;</option>
 <?php
 
-//~ $query = "select * from feature where feat_name != '' order by feat_name";
-//~ $result = $db->query($query);
-//~ $num_rows = $result ? $result->num_rows : 0;
-//~ 
-//~ if($num_rows > 0)
-//~ {
-    //~ for($i=1;$i<=$num_rows;$i++)
-    //~ {
-        //~ $row = $result->fetch_assoc();
-//~ 
-        //~ $feat_name=$row['feat_name'];
-        //~ $featid=$row['featid'];
-        //~ echo "<option value=\"$featid\">" . $feat_name . "</option>";
-    //~ }
-//~ }
-//~ 
-//~ if($result){$result->free();}
+$query = "select * from feature where feat_name != '' order by feat_name";
+$result = $db->query($query);
+$num_rows = $result ? $result->num_rows : 0;
+
+if($num_rows > 0)
+{
+    for($i=1;$i<=$num_rows;$i++)
+    {
+        $row = $result->fetch_assoc();
+
+        $feat_name=$row['feat_name'];
+        $featid=$row['featid'];
+        echo "<option value=\"$featid\">" . $feat_name . "</option>";
+    }
+}
+
+if($result){$result->free();}
 
 ?>
-<!--
+                        </select>
+                        <label class="titlespan form-label mt-4">సంవత్సరం</label>
+                        <div class="input-group">
+                            <select name="year1" class="form-select">
+                                <option value="">&nbsp;</option>
+<?php
+
+$query = "select distinct year from article order by year";
+$result = $db->query($query);
+$num_rows = $result ? $result->num_rows : 0;
+
+if($num_rows > 0)
+{
+    for($i=1;$i<=$num_rows;$i++)
+    {
+        $row = $result->fetch_assoc();
+
+        $year=$row['year'];
+        echo "<option value=\"$year\">" . $year . "</option>";
+    }
+}
+
+if($result){$result->free();}
+
+?>
                                     </select>
-                                </td>
-                            </tr>
--->
-<!--
-                            <tr>
-                                <td class="left"><label for="textfield3" class="titlespan">ಪದಗಳು</label></td>
-                                <td class="right"><input name="text" type="text" class="titlespan wide" id="textfield3" maxlength="150"/></td>
-                            </tr>
--->
-                            <tr>
-                                <td class="left">&nbsp;</td>
-                                <td class="right">
-                                    <input name="searchform" type="submit" class="clr1 med" id="button_search" value="వెదుకు"/>
-                                    <input name="resetform" type="reset" class="clr1 med" id="button_reset" value="రీసెట్"/>
-                                </td>
-                            </tr>
-                        </table>
+                                    <span class="small">&nbsp;&ndash;&nbsp;</span>
+                                    <select name="year2" class="form-select">
+                                        <option value="">&nbsp;</option>
+
+<?php
+$result = $db->query($query);
+$num_rows = $result ? $result->num_rows : 0;
+
+if($num_rows > 0)
+{
+    for($i=1;$i<=$num_rows;$i++)
+    {
+        $row = $result->fetch_assoc();
+
+        $year=$row['year'];
+        echo "<option value=\"$year\">" . $year . "</option>";
+    }
+}
+if($result){$result->free();}
+$db->close();
+?>
+                                    </select>
+                                </div> 
+                                <div class="btn-group mt-4 float-end">
+                                    <input name="searchform" type="submit" class="btn btn-primary me-4" id="button_search" value="Search"/>
+                                    <input name="resetform" type="reset" class="btn btn-primary" id="button_reset" value="Reset"/>
+                                </div>
+                        </div>    
                     </form>
                 </div>
-            </div> <!-- cd-container -->
-        </div> <!-- cd-scrolling-bg -->
-    </main> <!-- cd-main-content -->
-<?php include("include_footer.php");?>
+            </div> 
+        </div> 
+    </main> 
+<?php include("../inc/include_footer.php");?>
+<?php
+if (
+    $title === "" &&
+    $author === "" &&
+    $text === "" &&
+    $featid === "" &&
+    $year1 === "" &&
+    $year2 === ""
+) {
+    echo '<p class="gapAboveLarge text-center mt-5 clr2">
+            Please enter at least one search criteria.
+          </p>';
+    include("../inc/include_footer.php");
+    exit;
+}
+?>
+
+<script>
+function validateSearchForm() {
+    const fields = [
+        document.getElementById('title').value.trim(),
+        document.getElementById('author').value.trim(),
+        document.getElementById('text').value.trim(),
+        document.getElementById('year1').value.trim(),
+        document.getElementById('year2').value.trim(),
+        document.getElementById('featid').value.trim()
+    ];
+
+    const hasValue = fields.some(v => v !== "");
+
+    if (!hasValue) {
+        alert("Please enter at least ONE search field (Title, Author, Text, or Year).");
+
+        
+        return false;
+    }
+    return true;
+}
+</script>
+
