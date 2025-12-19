@@ -111,7 +111,7 @@ if($num_rows > 0)
 else
 {
 	// echo '<p class="sml mt-5 text-center clr2">ಇಲ್ಲಿ \'' . $letter . '\' ಅಕ್ಷರದಿಂದ ಪ್ರಾರಂಭವಾಗುವ ಹೆಸರಿನ ಲೇಖಕರಿಲ್ಲ</p>';
-	echo '<p class="sml mt-5 text-center clr2">கடிதம் \'' . $letter . '\' என்று ஆரம்பத்தில் எந்த ஆசிரியர்கள் உள்ளன';
+	echo '<p class="sml mt-5 text-center clr2">ఇక్కడ \'' . $letter . '\' అక్షరంతో ప్రారంభమయ్యే పేర్లు ఉన్న రచయితలు ఎవరూ లేరు.';
 }
 
 if($result){$result->free();}
