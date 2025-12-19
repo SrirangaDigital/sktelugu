@@ -50,8 +50,8 @@ if($num_rows > 0)
 		$monthdetails = getMonth($row['month']) . ", " . $row['year'];
 		$monthdetails = preg_replace('/^,/', '', $monthdetails);
 		$imgName = $volume . '_' . $row['part'] . '.jpg';
-		$partName = ($row['part'] == '99' )? 'ವಿಶೇಷ ಸಂಚಿಕೆ' : 'ಸಂಚಿಕೆ '. $dpart;
-		$monthdetails = ($row['part'] == '99' )? 'ವಿಶೇಷ ಸಂಚಿಕೆ' : $monthdetails;
+		$partName = ($row['part'] == '99' )? 'సంచిక' : 'సంచిక '. $dpart;
+		$monthdetails = ($row['part'] == '99' )? 'సంచిక' : $monthdetails;
 
 		echo '<div class="card shadow col-1">';
 		echo '<a href="toc.php?vol=' . $volume . '&amp;part=' . $row['part'] . '" title="'. $monthdetails .'"><img src="img/covers/i/' . $imgName . '" class="img-fluid" alt="issue '. $dpart .'" /></a>';

@@ -31,13 +31,13 @@ if($num_rows > 0)
 		$yearString = getYear($row['volume']);
 
 		echo '<div class="card shadow col-sm-4 col-md-1">';
-		echo '<a href="get-parts.php?volume=' . $row['volume'] . '"><img src="img/covers/v/' . $row['volume'] . '.jpg" class="img-fluid" alt="volume '. toKannada(intval($row['volume'])) .'" /></a>';
+		echo '<a href="get-parts.php?volume=' . $row['volume'] . '"><img src="img/covers/v/' . $row['volume'] . '.jpg" class="img-fluid" alt="volume '. intval($row['volume']) .'" /></a>';
 		echo '<div class="card-body">';
 		
 		if($yearString)	
-			echo '<a href="get-parts.php?volume=' . $row['volume'] . '">மலர் '. intval($row['volume']) .'<br /><span class="small align-middle badge d-inline text-bg-warning">('. $yearString .')</span></a>';
+			echo '<a href="get-parts.php?volume=' . '">సంపుటము '. intval($row['volume']) .'<br /><span class="small align-middle badge d-inline text-bg-warning">('. $yearString .')</span></a>';
 		else
-			echo '<a href="get-parts.php?volume=' . $row['volume'] . '">மலர் '. intval($row['volume']) .'</a>';
+			echo '<a href="get-parts.php?volume='  . '">సంపుటము '. intval($row['volume']) .'</a>';
 
 		echo '</div>';
 		echo '</div>';
