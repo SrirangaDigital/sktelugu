@@ -387,15 +387,17 @@ a {
 }
 
 .cd-fixed-bg.cd-bg-4 {
-  background-image: url("../img/real.jpg");
+  background-image: url("../img/cover.jpg");
 }
 
 #head{
-  background-image: url(../img/real.jpg);
+  background-image: url(../img/cover.jpg);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-color: var(--head-background-color);
+  background-size: 2250px 1300px;
+  background-position: center top; 
   height: 100vh;
   position: relative;
 }
