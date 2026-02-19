@@ -165,18 +165,18 @@ function getYear($volume)
 
 function getMonth($month)
 {
-	$month = preg_replace('/01/', 'ಜನವರಿ', $month);
-	$month = preg_replace('/02/', 'ಫೆಬ್ರವರಿ', $month);
-	$month = preg_replace('/03/', 'ಮಾರ್ಚ್', $month);
-	$month = preg_replace('/04/', 'ಏಪ್ರಿಲ್', $month);
-	$month = preg_replace('/05/', 'ಮೇ', $month);
-	$month = preg_replace('/06/', 'ಜೂನ್', $month);
-	$month = preg_replace('/07/', 'ಜುಲೈ', $month);
-	$month = preg_replace('/08/', 'ಆಗಸ್ಟ್', $month);
-	$month = preg_replace('/09/', 'ಸೆಪ್ಟೆಂಬರ್', $month);
-	$month = preg_replace('/10/', 'ಅಕ್ಟೋಬರ್', $month);
-	$month = preg_replace('/11/', 'ನವೆಂಬರ್', $month);
-	$month = preg_replace('/12/', 'ಡಿಸೆಂಬರ್', $month);
+	$month = preg_replace('/01/', 'జనవరి', $month);
+	$month = preg_replace('/02/', 'ఫిబ్రవరి', $month);
+	$month = preg_replace('/03/', 'మార్చి', $month);
+	$month = preg_replace('/04/', 'ఏప్రిల్', $month);
+	$month = preg_replace('/05/', 'మే', $month);
+	$month = preg_replace('/06/', 'జూన్', $month);
+	$month = preg_replace('/07/', 'జూలై', $month);
+	$month = preg_replace('/08/', 'ఆగస్టు', $month);
+	$month = preg_replace('/09/', 'సెప్టెంబర్', $month);
+	$month = preg_replace('/10/', 'అక్టోబర్', $month);
+	$month = preg_replace('/11/', 'నవంబర్', $month);
+	$month = preg_replace('/12/', 'డిసెంబర్', $month);
 
 	$month = preg_replace('/-/', ' &ndash; ', $month);
 	
