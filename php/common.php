@@ -197,6 +197,22 @@ function toKannada($value)
 	
 	return $value;
 }
+
+function toTelugu($value)
+{
+	$value = preg_replace('/0/', '౦', $value);
+	$value = preg_replace('/1/', '౧', $value);
+	$value = preg_replace('/2/', '౨', $value);
+	$value = preg_replace('/3/', '౩', $value);
+	$value = preg_replace('/4/', '౪', $value);
+	$value = preg_replace('/5/', '౫', $value);
+	$value = preg_replace('/6/', '౬', $value);
+	$value = preg_replace('/7/', '౭', $value);
+	$value = preg_replace('/8/', '౮', $value);
+	$value = preg_replace('/9/', '౯', $value);
+	
+	return $value;
+}
 /*
 isValidTitle, isValidFeature, isValidAuthor, isValidText
 */
