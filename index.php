@@ -4,6 +4,7 @@
 		<div class="headbanner">
 			<div class="parallax-content">
 				<p class="fKan" style="font-size: 20px;line-height: 1.5;">నందంతి యత్ప్రసాదేన సురాసురనరాదయః ।<br />సర్వే భజంతు నిత్యం తాం<br /><span style="color: #8B0000;font-size: 40px;">శ్రీ శంకరకృపాం</span>&nbsp; శుభామ్॥<br /><br /><br /><br />&nbsp;</p>
+				<p class="fKan"  style="font-size: 25px;line-height: 1.5; color: #8B0000;"><a href="php/img/subscribe.jpg">Subscription</a></p>
 <!-- 				<img src="php/img/logo.gif" alt="" />
 				<h3>The Archive</h3> -->
 			</div>
