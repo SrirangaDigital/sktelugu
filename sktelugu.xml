@@ -2688,7 +2688,7 @@
 			</allauthors>
 		</entry>
 	</part>
-	<part pnum="09" month="12" year="1972" maasa="వైశాఖము-జ్యేష్ఠము" samvatsara="పరిధావి">
+	<part pnum="09" month="05" year="1972" maasa="వైశాఖము-జ్యేష్ఠము" samvatsara="పరిధావి">
 		<entry>
 			<title>శ్రీ శంకర భగవత్పాద విరచిత శ్రీ శివానంందలహరి</title>
 			<feature></feature>
@@ -2802,7 +2802,7 @@
 			</allauthors>
 		</entry>
 	</part>
-	<part pnum="11" month="01" year="1972" maasa="పుష్యము-మాఘము" samvatsara="పరిధావి">
+	<part pnum="11" month="06" year="1972" maasa="పుష్యము-మాఘము" samvatsara="పరిధావి">
 		<entry>
 			<title>శ్రీ శంకర భగవత్పాద విరచిత శివానందలహరి</title>
 			<feature></feature>
@@ -3013,79 +3013,7 @@
 			<page>0045-0047</page>
 			<allauthors />
 		</entry>
-	</part>
-	<part pnum="06-12" month="04" year="1975" maasa="చైత్రము-వైశాఖము" samvatsara="రక్షస">
-		<entry>
-			<title>శ్రీ శంకర భగవత్పాద విరచిత శివానందలహరి</title>
-			<feature></feature>
-			<page>0001-0001</page>
-			<allauthors />
-		</entry>
-		<entry>
-			<title>శ్రీ జగద్గురు చరణుల ఉపదేశములు</title>
-			<feature></feature>
-			<page>0002-0003</page>
-			<allauthors />
-		</entry>
-		<entry>
-			<title>స్వవిషయము</title>
-			<feature></feature>
-			<page>0003-0004</page>
-			<allauthors>
-				<author type="" sal="">తుమ్మలపల్లి రామలింగేశ్వరరావు</author>
-			</allauthors>
-		</entry>
-		<entry>
-			<title>శ్రీ ఖణ్డఖణ్డషట్టది</title>
-			<feature></feature>
-			<page>0004-0005</page>
-			<allauthors>
-				<author type="" sal="">శ్రీ జగద్గురు సచ్చిదానందశివాభినవనృసింహభారతీస్వామిభిః</author>
-			</allauthors>
-		</entry>
-		<entry>
-			<title>ఈశానస్తుతి</title>
-			<feature></feature>
-			<page>0006-0006</page>
-			<allauthors>
-				<author type="1" sal="">శ్రీ మదహోబల పండితాచార్య</author>
-				<author type="2" sal="">కీ శే. బ్రహ్మశ్రీ చదలువాడ సుందరరామశాస్త్రిగారు</author>
-			</allauthors>
-		</entry>
-		<entry>
-			<title>శ్రీ శంకర విజయగాథ (21)</title>
-			<feature></feature>
-			<page>0007-0007</page>
-			<allauthors />
-		</entry>
-		<entry>
-			<title>పంచాంగ విశేషములు</title>
-			<feature></feature>
-			<page>0008-0008</page>
-			<allauthors />
-		</entry>
-		<entry>
-			<title>శ్రీ జగద్గురు చంద్ర శేఖరభారతీస్వామివారితో  సంభాషణలు</title>
-			<feature></feature>
-			<page>0009-0012</page>
-			<allauthors>
-				<author type="1" sal="">శ్రీ ఆర్. కృష్ణస్వామి, ఎం. ఏ. బి. యల్</author>
-				<author type="2" sal="">ళ్రీ పాదుక</author>
-			</allauthors>
-		</entry>
-		<entry>
-			<title>శ్రీ శృంగేరిలో శ్రీ జగద్గురువుల శిష్యస్వికార మహోత్సవము</title>
-			<feature></feature>
-			<page>0013-0014</page>
-			<allauthors />
-		</entry>
-		<entry>
-			<title>గ్రంథపరిచయము</title>
-			<feature></feature>
-			<page>0014-0016</page>
-			<allauthors />
-		</entry>
-	</part>
+	</part>	
 </volume>
 <volume vnum="014">
 	<part pnum="09" month="05" year="1975" maasa="వైశాఖము-జ్యేష్ఠము" samvatsara="రక్షస">
@@ -3168,6 +3096,78 @@
 			<allauthors>
 				<author type="" sal="">తురాషాట్టు</author>
 			</allauthors>
+		</entry>
+	</part>
+	<part pnum="06-12" month="04" year="1975" maasa="చైత్రము-వైశాఖము" samvatsara="రక్షస">
+		<entry>
+			<title>శ్రీ శంకర భగవత్పాద విరచిత శివానందలహరి</title>
+			<feature></feature>
+			<page>0001-0001</page>
+			<allauthors />
+		</entry>
+		<entry>
+			<title>శ్రీ జగద్గురు చరణుల ఉపదేశములు</title>
+			<feature></feature>
+			<page>0002-0003</page>
+			<allauthors />
+		</entry>
+		<entry>
+			<title>స్వవిషయము</title>
+			<feature></feature>
+			<page>0003-0004</page>
+			<allauthors>
+				<author type="" sal="">తుమ్మలపల్లి రామలింగేశ్వరరావు</author>
+			</allauthors>
+		</entry>
+		<entry>
+			<title>శ్రీ ఖణ్డఖణ్డషట్టది</title>
+			<feature></feature>
+			<page>0004-0005</page>
+			<allauthors>
+				<author type="" sal="">శ్రీ జగద్గురు సచ్చిదానందశివాభినవనృసింహభారతీస్వామిభిః</author>
+			</allauthors>
+		</entry>
+		<entry>
+			<title>ఈశానస్తుతి</title>
+			<feature></feature>
+			<page>0006-0006</page>
+			<allauthors>
+				<author type="1" sal="">శ్రీ మదహోబల పండితాచార్య</author>
+				<author type="2" sal="">కీ శే. బ్రహ్మశ్రీ చదలువాడ సుందరరామశాస్త్రిగారు</author>
+			</allauthors>
+		</entry>
+		<entry>
+			<title>శ్రీ శంకర విజయగాథ (21)</title>
+			<feature></feature>
+			<page>0007-0007</page>
+			<allauthors />
+		</entry>
+		<entry>
+			<title>పంచాంగ విశేషములు</title>
+			<feature></feature>
+			<page>0008-0008</page>
+			<allauthors />
+		</entry>
+		<entry>
+			<title>శ్రీ జగద్గురు చంద్ర శేఖరభారతీస్వామివారితో  సంభాషణలు</title>
+			<feature></feature>
+			<page>0009-0012</page>
+			<allauthors>
+				<author type="1" sal="">శ్రీ ఆర్. కృష్ణస్వామి, ఎం. ఏ. బి. యల్</author>
+				<author type="2" sal="">ళ్రీ పాదుక</author>
+			</allauthors>
+		</entry>
+		<entry>
+			<title>శ్రీ శృంగేరిలో శ్రీ జగద్గురువుల శిష్యస్వికార మహోత్సవము</title>
+			<feature></feature>
+			<page>0013-0014</page>
+			<allauthors />
+		</entry>
+		<entry>
+			<title>గ్రంథపరిచయము</title>
+			<feature></feature>
+			<page>0014-0016</page>
+			<allauthors />
 		</entry>
 	</part>
 </volume>
@@ -3605,7 +3605,7 @@
 			<allauthors />
 		</entry>
 	</part>
-	<part pnum="12" month="07" year="1977" maasa="శ్రావణము-భాద్రపదము" samvatsara="పింగళ">
+	<part pnum="12" month="08" year="1977" maasa="శ్రావణము-భాద్రపదము" samvatsara="పింగళ">
 		<entry>
 			<title>శ్రీ జగద్గురు చరణుల చాతుర్మాస్య వ్రతము</title>
 			<feature></feature>
@@ -4749,7 +4749,7 @@
 			<allauthors />
 		</entry>
 	</part>
-	<part pnum="12" month="07" year="1978" maasa="శ్రావణము-భాద్రపదము" samvatsara="కాళయుక్తి">
+	<part pnum="12" month="08" year="1978" maasa="శ్రావణము-భాద్రపదము" samvatsara="కాళయుక్తి">
 		<entry>
 			<title>శ్రీ శంకర భగవత్పాదాచార్య విరచిత శ్రీమత్త్రిపుర సుందరీ వేదపాద స్తోత్రమ్</title>
 			<feature></feature>
@@ -6137,7 +6137,7 @@
 		<allauthors />
 	</entry>
 </part>
-<part pnum="12" month="07" year="1979" maasa="శ్రావణము-భాద్రపదము" samvatsara="సిద్ధార్థ">
+	<part pnum="12" month="08" year="1979" maasa="శ్రావణము-భాద్రపదము" samvatsara="సిద్ధార్థ">
 	<entry>
 		<title>శ్రీ శంకర భగవత్పాదాచార్య విరచిత శ్రీమత్త్రిపుర సుందరీ వేదపాద స్తోత్రమ్</title>
 		<feature></feature>
@@ -8139,7 +8139,7 @@
 			<allauthors />
 		</entry>
 	</part>
-	<part pnum="12" month="07" year="1981" maasa="శ్రావణము-భాద్రపదము" samvatsara="దుర్మతి">
+	<part pnum="12" month="08" year="1981" maasa="శ్రావణము-భాద్రపదము" samvatsara="దుర్మతి">
 		<entry>
 			<title>శ్రీ శంకర భగవత్పాదాచార్య విరచిత శ్రీమత్త్రిపుర సుందరీ వేదపాద స్తోత్రమ్</title>
 			<feature></feature>
@@ -9961,7 +9961,7 @@
 			</allauthors>
 		</entry>
 	</part>
-	<part pnum="12" month="07" year="1984" maasa="శ్రావణము-భాద్రపదము" samvatsara="రక్తాక్షి">
+	<part pnum="12" month="08" year="1984" maasa="శ్రావణము-భాద్రపదము" samvatsara="రక్తాక్షి">
 		<entry>
 			<title>శ్రీ శంకర భగవత్పాదాచార్య విరచిత శ్రీమత్త్రిపుర సుందరీ వేదపాద స్తోత్రమ్</title>
 			<feature></feature>
@@ -11635,7 +11635,7 @@
 			<allauthors />
 		</entry>
 	</part>
-	<part pnum="12" month="07" year="1986" maasa="శ్రావణము-భాద్రపదము" samvatsara="అక్షయ్">
+	<part pnum="12" month="08" year="1986" maasa="శ్రావణము-భాద్రపదము" samvatsara="అక్షయ్">
 		<entry>
 			<title>శ్రీ శంకర భగవత్పాదాచార్య విరచిత లలితా పంచరత్న స్తోత్రము</title>
 			<feature></feature>
